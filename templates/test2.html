@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+<!-- <script type=text/javascript src="{{ url_for('static', filename='js/test1.js') }}"></script> -->
+<script type=text/javascript src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}"></script>
+<script type="application/javascript">
+ function get_res(){
+
+             alert($("#result").text());
+         $.ajax({
+             type: "GET",
+             url: "/test2",
+             data: {a: $("#a").val(), b: document.getElementById('b').value},
+             dataType: "json",
+             success: function (data) {
+                 $("#result").text(data.result);
+
+             }
+         });
+
+
+ }
+
+</script>
+
+<h1>jQuery Example</h1>
+<p><input type=text size=5 name="a" id="a"> +
+   <input type=text size=5 name="b" id="b"> =
+   <span id=result>?</span>
+<p><a href="javascript:void(0);" id=calculate>calculate server side</a>
+<input type="button" name="button" id="button" value="提交" onclick="get_res()" />
+</body>
+</html>
